@@ -16,48 +16,46 @@ import android.util.Log;
 
 public class RESTUtils {
 
-	private static final String TAG = "tag";
+    private static final String TAG = "tag";
 
-	public static final String queryRESTurl(String url) {
-		HttpClient httpclient = new DefaultHttpClient();
-		HttpGet httpget = new HttpGet(url);
-		HttpResponse response;
-		String result = "";
-		try {
-			response = httpclient.execute(httpget);
-			Log.i(TAG, "Status:[" + response.getStatusLine().toString() + "]");
-			HttpEntity entity = response.getEntity();
+    public static final String queryRESTurl(String url) {
+        HttpClient httpclient = new DefaultHttpClient();
+        HttpGet httpget = new HttpGet(url);
+        HttpResponse response;
+        String result = "";
+        try {
+            response = httpclient.execute(httpget);
+            Log.i(TAG, "Status:[" + response.getStatusLine().toString() + "]");
+            HttpEntity entity = response.getEntity();
 
-			if (entity != null) {
-				InputStream instream = entity.getContent();
-				result = convertStreamToString(instream);
-				Log.i(TAG, "Result of converstion: [" + result + "]");
-			}
-		} catch (ClientProtocolException e) {
-			Log.e("REST", "There was a protocol based error", e);
-		} catch (IOException e) {
-			Log.e("REST", "There was an IO Stream related error", e);
-		}
+            if (entity != null) {
+                InputStream instream = entity.getContent();
+                result = convertStreamToString(instream);
+                Log.i(TAG, "Result of converstion: [" + result + "]");
+            }
+        } catch (ClientProtocolException e) {
+            Log.e("REST", "There was a protocol based error", e);
+        } catch (IOException e) {
+            Log.e("REST", "There was an IO Stream related error", e);
+        }
 
-		return result;
-	}
+        return result;
+    }
 
-	private static final String convertStreamToString(InputStream instream)
-			throws IOException {
-		String result = "";
-		StringBuilder sb = new StringBuilder();
-		try {
+    private static final String convertStreamToString(InputStream instream) throws IOException {
+        String result = "";
+        StringBuilder sb = new StringBuilder();
+        try {
 
-			BufferedReader reader = new BufferedReader(new InputStreamReader(
-					instream, "UTF-8"));
-			String line = "";
-			while ((line = reader.readLine()) != null) {
-				sb.append(line).append("\n");
-			}
-			result = sb.toString();
-		} finally {
-			instream.close();
-		}
-		return result;
-	}
+            BufferedReader reader = new BufferedReader(new InputStreamReader(instream, "UTF-8"));
+            String line = "";
+            while ((line = reader.readLine()) != null) {
+                sb.append(line).append("\n");
+            }
+            result = sb.toString();
+        } finally {
+            instream.close();
+        }
+        return result;
+    }
 }

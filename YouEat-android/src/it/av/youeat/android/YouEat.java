@@ -20,42 +20,38 @@ import android.widget.AdapterView.OnItemClickListener;
 
 public class YouEat extends ListActivity {
 
-	@Override
-	public void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
 
-		String result = RESTUtils
-				.queryRESTurl("http://www.youeat.org/rest/findCloseRistoranti/37.331689/-122.030731/900000000/5");
+        String result = RESTUtils
+                .queryRESTurl("http://www.youeat.org/rest/findCloseRistoranti/37.331689/-122.030731/900000000/5");
 
-		try {
-			JSONObject json = new JSONObject(result);
+        try {
+            JSONObject json = new JSONObject(result);
 
-			JSONArray root = json
-					.getJSONArray("ristorantePositionAndDistanceList");
-			List<String> risto = new ArrayList<String>(0);
-			for (int i = 0; i < root.length(); i++) {
-				JSONObject ristoA = root.getJSONObject(i);
-				risto.add(ristoA.getJSONObject("ristorante").getString("name"));
-			}
+            JSONArray root = json.getJSONArray("ristorantePositionAndDistanceList");
+            List<String> risto = new ArrayList<String>(0);
+            for (int i = 0; i < root.length(); i++) {
+                JSONObject ristoA = root.getJSONObject(i);
+                risto.add(ristoA.getJSONObject("ristorante").getString("name"));
+            }
 
-			setListAdapter(new ArrayAdapter<String>(this, R.layout.list_item,
-					risto));
+            setListAdapter(new ArrayAdapter<String>(this, R.layout.list_item, risto));
 
-		} catch (JSONException e) {
-			Log.e("JSON", "There was an error parsing the JSON", e);
-		}
+        } catch (JSONException e) {
+            Log.e("JSON", "There was an error parsing the JSON", e);
+        }
 
-		ListView lv = getListView();
-		lv.setTextFilterEnabled(true);
+        ListView lv = getListView();
+        lv.setTextFilterEnabled(true);
 
-		lv.setOnItemClickListener(new OnItemClickListener() {
-			public void onItemClick(AdapterView<?> parent, View view,
-					int position, long id) {
-				// When clicked, show a toast with the TextView text
-				Toast.makeText(getApplicationContext(),
-						((TextView) view).getText(), Toast.LENGTH_SHORT).show();
-			}
-		});
-	}
+        lv.setOnItemClickListener(new OnItemClickListener() {
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                // When clicked, show a toast with the TextView text
+                Toast.makeText(getApplicationContext(), ((TextView) view).getText(), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
 
 }
