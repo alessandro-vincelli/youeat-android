@@ -3,5 +3,8 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="gen"/>
 	<classpathentry kind="con" path="com.android.ide.eclipse.adt.ANDROID_FRAMEWORK"/>
+	<classpathentry kind="lib" path="/Users/alessandro/.m2/repository/org/codehaus/jackson/jackson-core-asl/1.5.2/jackson-core-asl-1.5.2.jar"/>
+	<classpathentry kind="lib" path="/Users/alessandro/.m2/repository/org/codehaus/jackson/jackson-mapper-asl/1.5.2/jackson-mapper-asl-1.5.2.jar"/>
+	<classpathentry kind="lib" path="/Users/alessandro/.m2/repository/org/codehaus/jackson/jackson-xc/1.5.2/jackson-xc-1.5.2.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
