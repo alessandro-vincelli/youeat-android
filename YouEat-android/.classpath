@@ -6,5 +6,6 @@
 	<classpathentry kind="lib" path="/Users/alessandro/.m2/repository/org/codehaus/jackson/jackson-core-asl/1.5.2/jackson-core-asl-1.5.2.jar"/>
 	<classpathentry kind="lib" path="/Users/alessandro/.m2/repository/org/codehaus/jackson/jackson-mapper-asl/1.5.2/jackson-mapper-asl-1.5.2.jar"/>
 	<classpathentry kind="lib" path="/Users/alessandro/.m2/repository/org/codehaus/jackson/jackson-xc/1.5.2/jackson-xc-1.5.2.jar"/>
+	<classpathentry kind="lib" path="/Users/alessandro/Dev/android-sdk-mac_86/add-ons/google_apis-7_r01/libs/maps.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

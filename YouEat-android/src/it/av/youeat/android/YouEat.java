@@ -1,5 +1,6 @@
 package it.av.youeat.android;
 
+import it.av.youeat.android.support.SerialID;
 import it.av.youeat.ocm.model.Ristorante;
 import it.av.youeat.ocm.model.combined.RistoranteAndDistance;
 
@@ -97,10 +98,9 @@ public class YouEat extends ListActivity {
 
     private void launchRisto(Ristorante theRisto) {
         Intent next = new Intent();
-        // next.setClass(this, WordActivity.class);
-        // next.putExtra("word", theWord.word);
-        // next.putExtra("definition", theWord.definition);
-        // startActivity(next);
+        next.setClass(this, RistoranteActivity.class);
+        next.putExtra(SerialID.RISTORANTE, theRisto);
+        startActivity(next);
     }
 
 }

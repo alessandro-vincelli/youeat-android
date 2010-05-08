@@ -12,7 +12,10 @@
             </intent-filter>
         </activity>
 
-    </application>
+    <uses-library android:name="com.google.android.maps" />
+<activity android:name="RistoranteActivity"></activity>
+</application>
 
 	<uses-permission android:name="android.permission.INTERNET"></uses-permission>
+    
 </manifest> 

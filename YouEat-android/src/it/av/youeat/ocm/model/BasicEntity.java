@@ -1,6 +1,8 @@
 package it.av.youeat.ocm.model;
 
-public class BasicEntity {
+import java.io.Serializable;
+
+public class BasicEntity implements Serializable{
 
     private String id;
 

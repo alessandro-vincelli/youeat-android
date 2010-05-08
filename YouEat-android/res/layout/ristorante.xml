@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:stretchColumns="1">
+
+    <TableRow>
+    <TextView
+            android:id="@+id/name"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textSize="30sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dip"
+            android:layout_marginTop="5dip" />
+    </TableRow>
+    <TableRow>
+    <TextView
+            android:id="@+id/tags"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textSize="10sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dip"
+            android:padding="5dip"
+             />
+    </TableRow>
+    <TableRow>            
+    <TextView
+            android:id="@+id/address"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textSize="10sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dip"
+            android:layout_marginLeft="10dip" />
+    </TableRow>
+    <TableRow>
+    <TextView
+            android:id="@+id/www"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textSize="10sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dip"
+            android:layout_marginLeft="10dip" />
+    </TableRow>
+
+    <TableRow>
+    <TextView
+            android:id="@+id/description"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textSize="10sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dip"
+            android:layout_marginLeft="10dip" />
+    </TableRow>
+    <!--<com.google.android.maps.MapView
+        android:id="@+id/mapview"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:clickable="true"
+        android:apiKey="ABQIAAAAEpqZyWLxrLSc1icxiiTLyBRjFP5Ion2TodTauLHyn40LiCPQaRSoBSldN1pDUDTAPEK5AlXpouSLuA"
+    />            
+--></TableLayout>
