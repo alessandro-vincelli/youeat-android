@@ -47,6 +47,17 @@
     </TableRow>
 
     <TableRow>
+    <Button
+            android:id="@+id/showsMap"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textSize="10sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dip"
+            android:layout_marginLeft="10dip" />
+    </TableRow>
+    
+    <TableRow>
     <TextView
             android:id="@+id/description"
             android:textAppearance="?android:attr/textAppearanceMedium"
