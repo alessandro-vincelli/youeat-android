@@ -27,11 +27,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.google.android.maps.MapView;
-
-/**
- * Displays a word and its definition.
- */
 public class RistoranteActivity extends Activity {
 
     private TextView mName;
@@ -68,7 +63,7 @@ public class RistoranteActivity extends Activity {
         mWWW.setText(risto.getWww());
         mDescription.setText(extractDescriptions(risto));
         mTags.setText(extractTags(risto));
-        //mapView = (MapView) findViewById(R.id.mapview);
+        // mapView = (MapView) findViewById(R.id.mapview);
     }
 
     private String extractDescriptions(Ristorante ristorante) {
@@ -88,16 +83,10 @@ public class RistoranteActivity extends Activity {
         }
         return tags.toString();
     }
-    
+
     private void launchMap() {
         Intent next = new Intent();
         next.setClass(this, MapActivity.class);
         startActivity(next);
     }
-
-
-//    @Override
-//    protected boolean isRouteDisplayed() {
-//        return false;
-//    }
 }
