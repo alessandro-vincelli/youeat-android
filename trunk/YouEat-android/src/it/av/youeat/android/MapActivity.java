@@ -17,8 +17,6 @@
 package it.av.youeat.android;
 
 import android.os.Bundle;
-import android.widget.Button;
-import android.widget.TextView;
 
 public class MapActivity extends com.google.android.maps.MapActivity {
     @Override
