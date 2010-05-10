@@ -7,7 +7,7 @@
     
         <uses-library android:name="com.google.android.maps" /> 
         <activity android:name=".YouEat"
-                  android:label="@string/app_name">
+                  android:label="@string/app_name" android:theme="@android:style/Theme.NoTitleBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -17,6 +17,7 @@
     
     <activity android:name="RistoranteActivity"></activity>
     <activity android:name="MapActivity"></activity>
+    <activity android:name="CloseRistoActivity"></activity>
     
 </application>
 
