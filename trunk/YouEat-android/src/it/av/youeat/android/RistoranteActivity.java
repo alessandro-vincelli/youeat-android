@@ -1,19 +1,3 @@
-/*
- * Copyright (C) 2009 The Android Open Source Project
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 package it.av.youeat.android;
 
 import it.av.youeat.android.support.SerialID;
@@ -34,10 +18,14 @@ public class RistoranteActivity extends Activity {
     private TextView mTags;
     private TextView mWWW;
     private TextView mDescription;
+    private Ristorante risto;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        Intent intent = getIntent();
+        risto = (Ristorante) intent.getSerializableExtra(SerialID.RISTORANTE);
 
         setContentView(R.layout.ristorante);
 
@@ -51,19 +39,15 @@ public class RistoranteActivity extends Activity {
         button.setClickable(true);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                launchMap();
+                launchMap(risto);
             }
         });
-
-        Intent intent = getIntent();
-        Ristorante risto = (Ristorante) intent.getSerializableExtra(SerialID.RISTORANTE);
 
         mName.setText(risto.getName());
         mAddress.setText(risto.getAddress());
         mWWW.setText(risto.getWww());
         mDescription.setText(extractDescriptions(risto));
         mTags.setText(extractTags(risto));
-        // mapView = (MapView) findViewById(R.id.mapview);
     }
 
     private String extractDescriptions(Ristorante ristorante) {
@@ -84,9 +68,11 @@ public class RistoranteActivity extends Activity {
         return tags.toString();
     }
 
-    private void launchMap() {
+    private void launchMap(Ristorante theRisto) {
         Intent next = new Intent();
         next.setClass(this, MapActivity.class);
+        next.putExtra(SerialID.RISTORANTE, theRisto);
         startActivity(next);
     }
+
 }
