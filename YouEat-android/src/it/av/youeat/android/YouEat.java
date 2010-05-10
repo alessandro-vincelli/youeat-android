@@ -9,6 +9,7 @@ import java.util.List;
 import android.app.ListActivity;
 import android.content.Context;
 import android.content.Intent;
+import android.location.LocationManager;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -21,27 +22,18 @@ import android.widget.TwoLineListItem;
 
 public class YouEat extends ListActivity {
 
+    private LocationManager locationManager;
+    private RESTUtils restUtils = new RESTUtils();
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        List<RistoranteAndDistance> ristos = RESTUtils.findRistoOnCurrentPosition();
+        locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+        List<RistoranteAndDistance> ristos = restUtils.findRistoOnCurrentPosition(locationManager);
         RistoAdapter wordAdapter = new RistoAdapter(ristos);
         ListView lv = getListView();
         lv.setAdapter(wordAdapter);
         lv.setOnItemClickListener(wordAdapter);
-
-        // setListAdapter(new ArrayAdapter<String>(this, R.layout.list_item, ristos));
-        //
-        // ListView lv = getListView();
-        // lv.setTextFilterEnabled(true);
-        //
-        // lv.setOnItemClickListener(new OnItemClickListener() {
-        // public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        // // When clicked, show a toast with the TextView text
-        // Toast.makeText(getApplicationContext(), ((TextView) view).getText(), Toast.LENGTH_SHORT).show();
-        // }
-        // });
     }
 
     class RistoAdapter extends BaseAdapter implements AdapterView.OnItemClickListener {
