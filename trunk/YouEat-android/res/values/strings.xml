@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="hello">Hello World, YouEat!</string>
     <string name="app_name">YouEat</string>
+    <string name="search_instructions">Press the search key to look up a restaurant</string>
+    <!-- Shown above search results when we receive a search request. -->
+    <string name="search_results">Search results for \'<xliff:g id="string">%s</xliff:g>\': </string>
+    <string name="menu_search">Search</string>
+    <!-- The description that will show up in the search settings for this source.  -->
+    <string name="settings_description">Definitions of words</string>
+    <!-- The label for the search results for this app (see searchable.xml for more details). -->
+    <string name="search_label">Dictionary</string>
+
 </resources>
