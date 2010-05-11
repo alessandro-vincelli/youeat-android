@@ -19,16 +19,16 @@ public class YouEat extends TabActivity {
         Intent intent;  // Reusable Intent for each tab
 
         // Create an Intent to launch an Activity for the tab (to be reused)
-        intent = new Intent().setClass(this, CloseRistoActivity.class);
+        intent = new Intent().setClass(this, SearchRistoActivity.class);
 
         // Initialize a TabSpec for each tab and add it to the TabHost
-        spec = tabHost.newTabSpec("artists").setIndicator("Artists",
-                          res.getDrawable(R.drawable.androidmarker))
+        spec = tabHost.newTabSpec("search").setIndicator("Search",
+                          res.getDrawable(R.drawable.magnifyingglass))
                       .setContent(intent);
         tabHost.addTab(spec);
-        intent = new Intent().setClass(this, SearchRistoActivity.class);
-        spec = tabHost.newTabSpec("search").setIndicator("Artists",
-                res.getDrawable(R.drawable.androidmarker))
+        intent = new Intent().setClass(this, CloseRistoActivity.class);
+        spec = tabHost.newTabSpec("close").setIndicator("Around me",
+                res.getDrawable(R.drawable.mapmarker))
             .setContent(intent);
         tabHost.addTab(spec);
         //tabHost.setCurrentTab(getIntent());
