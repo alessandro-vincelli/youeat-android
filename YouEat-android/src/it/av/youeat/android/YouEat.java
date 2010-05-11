@@ -26,6 +26,11 @@ public class YouEat extends TabActivity {
                           res.getDrawable(R.drawable.androidmarker))
                       .setContent(intent);
         tabHost.addTab(spec);
+        intent = new Intent().setClass(this, SearchRistoActivity.class);
+        spec = tabHost.newTabSpec("search").setIndicator("Artists",
+                res.getDrawable(R.drawable.androidmarker))
+            .setContent(intent);
+        tabHost.addTab(spec);
         //tabHost.setCurrentTab(getIntent());
     }
 

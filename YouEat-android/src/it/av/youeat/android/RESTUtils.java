@@ -54,6 +54,17 @@ public class RESTUtils {
         return results;
     }
 
+    public final List<Ristorante> findRisto(String query) {
+        List<Ristorante> results = new ArrayList<Ristorante>(20);
+        ristoIterator = restCall("http://www.youeat.org/rest/findRistoranti/" + query, "ristoranteList");
+        while (ristoIterator.hasNext()) {
+            JsonNode jsonRistoNode = ristoIterator.next();
+            Ristorante risto = mapper.convertValue(jsonRistoNode, Ristorante.class);
+            results.add(risto);
+        }
+        return results;
+    }
+
     private Iterator<JsonNode> restCall(String url, String rootJSON) {
         HttpClient httpclient = new DefaultHttpClient();
         HttpGet httpget = new HttpGet(url);
