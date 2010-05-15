@@ -18,11 +18,11 @@ public class RistoranteActivity extends Activity {
     private TextView mName;
     private TextView mAddress;
     private TextView mTags;
-    private TextView mWWW;
     private TextView mDescription;
     private Ristorante risto;
     private Button showMap;
     private Button callRisto;
+    private Button mWWW;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,8 +36,18 @@ public class RistoranteActivity extends Activity {
         mName = (TextView) findViewById(R.id.name);
         mAddress = (TextView) findViewById(R.id.address);
         mTags = (TextView) findViewById(R.id.tags);
-        mWWW = (TextView) findViewById(R.id.www);
+        
         mDescription = (TextView) findViewById(R.id.description);
+        
+        mWWW = (Button) findViewById(R.id.www);
+        mWWW.setText(risto.getPhoneNumber());
+        mWWW.setClickable(true);
+        mWWW.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(risto.getWww()));
+                startActivity(intent);
+            }
+        });
         
         callRisto = (Button) findViewById(R.id.callRisto);
         callRisto.setText(risto.getPhoneNumber());
