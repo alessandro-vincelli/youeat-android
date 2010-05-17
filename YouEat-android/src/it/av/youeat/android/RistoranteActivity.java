@@ -40,27 +40,37 @@ public class RistoranteActivity extends Activity {
         mDescription = (TextView) findViewById(R.id.description);
         
         mWWW = (Button) findViewById(R.id.www);
-        mWWW.setText(risto.getPhoneNumber());
-        mWWW.setClickable(true);
-        mWWW.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(risto.getWww()));
-                startActivity(intent);
-            }
-        });
+        if(risto.getWww() != null){
+            mWWW.setText(risto.getWww());
+            mWWW.setClickable(true);
+            mWWW.setOnClickListener(new View.OnClickListener() {
+                public void onClick(View v) {
+                    Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(risto.getWww()));
+                    startActivity(intent);
+                }
+            });    
+        }
+        else{
+            mWWW.setVisibility(View.GONE);    
+        }
         
         callRisto = (Button) findViewById(R.id.callRisto);
-        callRisto.setText(risto.getPhoneNumber());
-        callRisto.setClickable(true);
-        callRisto.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse(createTelUrl(risto.getPhoneNumber())));
-                startActivity(intent);
-            }
-        });
+        if(risto.getPhoneNumber() != null){
+            callRisto.setText(risto.getPhoneNumber());
+            callRisto.setClickable(true);
+            callRisto.setOnClickListener(new View.OnClickListener() {
+                public void onClick(View v) {
+                    Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse(createTelUrl(risto.getPhoneNumber())));
+                    startActivity(intent);
+                }
+            });    
+        }
+        else{
+            callRisto.setVisibility(View.GONE);
+        }
         
         showMap = (Button) findViewById(R.id.showsMap);
-        showMap.setText("Shows Map");
+        showMap.setText("Show Map");
         showMap.setClickable(true);
         showMap.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -70,16 +80,30 @@ public class RistoranteActivity extends Activity {
 
         mName.setText(risto.getName());
         mAddress.setText(risto.getAddress());
-        mWWW.setText(risto.getWww());
-        mDescription.setText(extractDescriptions(risto));
-        mTags.setText(extractTags(risto));
+        String description = extractDescriptions(risto);
+        if(description.length() > 0){
+            mDescription.setText(description);    
+        }
+        else{
+            mDescription.setVisibility(View.GONE);
+        }
+        
+        String tags = extractTags(risto);
+        if(tags.length() > 0){
+            mTags.setText(tags);    
+        }
+        else{
+            mTags.setVisibility(View.GONE);
+        }
     }
 
     private String extractDescriptions(Ristorante ristorante) {
         StringBuffer description = new StringBuffer();
         for (RistoranteDescriptionI18n desc : ristorante.getDescriptions()) {
-            description.append(desc.getDescription());
-            description.append("\n\n");
+            if(desc.getDescription() != null){
+                description.append(desc.getDescription());
+                description.append("\n\n");
+            }
         }
         return description.toString();
     }
